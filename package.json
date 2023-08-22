@@ -10,11 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/error-message": "^2.0.1",
+    "@hookform/resolvers": "^3.3.0",
     "@types/styled-components": "^5.1.26",
     "antd": "^5.7.3",
+    "install": "^0.13.0",
+    "npm": "^9.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.0.5"
+    "react-hook-form": "^7.45.4",
+    "styled-components": "^6.0.5",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
