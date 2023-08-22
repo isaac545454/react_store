@@ -1,9 +1,9 @@
-import { ComponentProps, forwardRef } from "react";
+import { ComponentProps, forwardRef, InputHTMLAttributes } from "react";
 import * as S from "./style";
-import { Input as InputAntd, InputProps } from "antd";
+import { InputProps } from "antd";
 import { ErrorMessage } from "@hookform/error-message";
 
-interface Props extends InputProps {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   title?: string;
   margin?: string;
   errorExist?: boolean;
@@ -12,10 +12,18 @@ interface Props extends InputProps {
 
 const Input = forwardRef<InputProps, Props>((props, ref) => {
   const { margin, title, errorExist = false, error, ...res } = props;
+
+  console.log(ref);
+
   return (
     <S.Container style={{ margin }}>
       {<S.TitleInput> {title}</S.TitleInput>}
-      <InputAntd {...res} ref={ref} />
+      <input
+        key={error?.name}
+        ref={ref}
+        {...res}
+        style={{ width: "100%", padding: "10px", borderRadius: "10px" }}
+      />
       {errorExist && error && (
         <ErrorMessage {...error} render={({ message }) => <p>{message}</p>} />
       )}

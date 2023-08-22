@@ -1,12 +1,9 @@
 import { z } from "zod";
 
 export const schema = z.object({
-  email: z.string().refine((value) => value.trim() !== "", {
-    message: "Campo obrigatório",
-    path: ["email"], // opcional: especifica o caminho do campo
-  }),
-  password: z.string().refine((value) => value.trim() !== "", {
-    message: "Campo obrigatório",
-    path: ["password"], // opcional: especifica o caminho do campo
-  }),
+  email: z
+    .string()
+    .email("email invalido")
+    .min(1, { message: "Campo obrigatório" }),
+  password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
 });
