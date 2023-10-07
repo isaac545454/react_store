@@ -5,7 +5,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { useLogin } from "./hook";
 
-export default function Login() {
+export   function Login() {
   const { errors, handleSubmit, onSubmit, register } = useLogin();
 
   console.log(errors);
