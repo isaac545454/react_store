@@ -1,7 +1,7 @@
 import * as S from './style'
 import imageStore from '../../../public/Camada_1.png'
 import imageLogo from '../../../public/LOGO.svg'
-import Input from '../../components/Input'
+import { Input } from '../../components/Input'
 import Button from '../../components/Button'
 import { useLogin } from './hook'
 
@@ -17,7 +17,7 @@ export function Login() {
 					<S.TitleLogin level={2} type="secondary">
 						LOGIN
 					</S.TitleLogin>
-					<form onSubmit={handleSubmit(onSubmit, err => console.log(err))}>
+					<form onSubmit={handleSubmit(onSubmit)}>
 						<Input title="USUÁRIO:" margin="32px 0px 0px" {...register('email')} error={{ name: 'email', errors }} />
 						<Input
 							title="SENHA:"
