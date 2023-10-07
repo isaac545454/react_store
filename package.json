@@ -15,6 +15,7 @@
     "@tanstack/react-query": "^4.36.1",
     "@types/styled-components": "^5.1.26",
     "antd": "^5.7.3",
+    "axios": "^1.5.1",
     "install": "^0.13.0",
     "npm": "^9.8.1",
     "react": "^18.2.0",
