@@ -1,6 +1,6 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import { IGetMutation } from './types'
-import { createHttp } from '../../../infra'
+import { createHttp } from '../../../infra/HttpClientFactory/http-client-factory'
 
 export const useHttpQuery = <TData, TError = unknown>({
 	queryKey,
