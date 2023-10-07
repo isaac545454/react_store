@@ -1,8 +1,8 @@
 import * as S from './style'
 import imageStore from '../../../public/Camada_1.png'
 import imageLogo from '../../../public/LOGO.svg'
-import { Input } from '../../components/Input'
-import Button from '../../components/Button'
+import { Input } from '../../components/atoms/Input'
+import Button from '../../components/atoms/Button'
 import { useLogin } from './hook'
 
 export function Login() {
