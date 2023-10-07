@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios'
 import { HttpServiceProps } from './types'
-import { HttpProps } from '../../presentation/types/HttpProps'
+import { HttpProps } from '../../../presentation/types/HttpProps'
 
 export class HttpService<IResponse, TClient extends AxiosInstance> implements HttpServiceProps<IResponse> {
 	private readonly client: TClient
