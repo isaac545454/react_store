@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form'
 import { schema } from './schema'
-import { ISchema } from './interface'
+import { ISchema, LoginProps } from './interface'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-export const useLogin = () => {
+export const useLogin = ({ loginMutation }: LoginProps) => {
 	const {
 		register,
 		formState: { errors },
@@ -13,7 +13,7 @@ export const useLogin = () => {
 	})
 
 	const onSubmit = (data: ISchema) => {
-		console.log(data)
+		loginMutation.mutate(data)
 	}
 
 	return {

@@ -10,7 +10,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 		<S.Container style={{ margin }}>
 			{<S.TitleInput>{title}</S.TitleInput>}
 			<input key={error?.name} ref={ref} {...res} style={{ width: '100%', padding: '10px', borderRadius: '10px' }} />
-			{error?.errors && <ErrorMessage {...error} render={({ message }) => <p>{message}</p>} />}
+			{error?.errors && <ErrorMessage {...error} render={({ message }) => <S.Error>{message}</S.Error>} />}
 		</S.Container>
 	)
 })

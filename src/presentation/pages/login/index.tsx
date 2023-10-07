@@ -1,26 +1,25 @@
 import * as S from './style'
-import imageStore from '../../../public/Camada_1.png'
-import imageLogo from '../../../public/LOGO.svg'
 import { Input } from '../../components/atoms/Input'
-import Button from '../../components/atoms/Button'
+import { Button } from '../../components/atoms/Button'
 import { useLogin } from './hook'
+import { LoginProps } from './interface'
 
-export function Login() {
-	const { errors, handleSubmit, onSubmit, register } = useLogin()
+export const Login = (props: LoginProps) => {
+	const { errors, handleSubmit, onSubmit, register } = useLogin(props)
 
 	return (
 		<S.Container>
-			<S.BackgroundImage src={imageStore} />
+			<S.BackgroundImage src={'/Camada_1.png'} />
 			<S.ContainerLogin>
 				<S.LimitedContainer>
-					<S.LogoImage src={imageLogo} />
+					<S.LogoImage src={'/LOGO.svg'} />
 					<S.TitleLogin level={2} type="secondary">
 						LOGIN
 					</S.TitleLogin>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<Input title="USUÁRIO:" margin="32px 0px 0px" {...register('email')} error={{ name: 'email', errors }} />
 						<Input
-							title="SENHA:"
+							title="SENHA"
 							margin="32px 0px 16px 0px"
 							{...register('password')}
 							error={{ name: 'password', errors }}
