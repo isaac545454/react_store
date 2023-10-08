@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { NOTAUTHROUTES } from '../../routes/notAuth'
-import { MakeLogin } from '../../../../main/Factories/pages/login'
+import { MakeLogin } from '../../../../main/Factories/pages/login/index.'
 
 export const notAuth = createBrowserRouter([
 	{
