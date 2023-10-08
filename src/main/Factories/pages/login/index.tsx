@@ -23,6 +23,7 @@ export const MakeLogin = () => {
 			onSuccess: data => {
 				login(data.user)
 				BrowserStorage.setItem('accessToken', data.accessToken)
+				Notification.success('login Realizado com sucesso')
 				navigate(AUTHROUTES.home)
 			},
 			onError: () => {
