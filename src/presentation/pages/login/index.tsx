@@ -2,7 +2,7 @@ import * as S from './style'
 import { Input } from '../../components/atoms/Input'
 import { Button } from '../../components/atoms/Button'
 import { useLogin } from './hook'
-import { LoginProps } from './interface'
+import { LoginProps } from './types/interface'
 
 export const Login = (props: LoginProps) => {
 	const { errors, handleSubmit, onSubmit, register } = useLogin(props)
