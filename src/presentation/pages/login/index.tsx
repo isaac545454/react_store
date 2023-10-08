@@ -25,7 +25,7 @@ export const Login = (props: LoginProps) => {
 							{...register('password')}
 							error={{ name: 'password', errors }}
 						/>
-						<Button type="primary" margin="40px 0px 16px 0px" htmlType="submit">
+						<Button type="primary" margin="40px 0px 16px 0px" htmlType="submit" disabled={props.loginMutationLoading}>
 							ENTRAR
 						</Button>
 					</form>

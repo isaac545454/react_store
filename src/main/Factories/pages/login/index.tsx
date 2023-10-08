@@ -3,20 +3,21 @@ import { ENDPOINT } from '../../../../infra/Http/HttpEndpoints/endpoint-http'
 import { useHttpMutation } from '../../../../presentation/hooks/useHttpMutation'
 import { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
 import { AuthenticationResponse } from '../../../../domain/models/AuthenticationResponse'
 import { AUTHROUTES } from '../../../../presentation/AppRouter/routes/auth'
 import { loginSchema } from '../../../../domain/models/Login'
 import { useAuthStore } from '../../../../presentation/stores/auth'
 import { loginSchemaProps } from '../../../../domain/schemas/login'
 import { saveToBrowserStorage } from '../../Storage/storageFactory'
+import { useNotificationWithToast } from '../../Notification'
 
 export const MakeLogin = () => {
 	const navigate = useNavigate()
 	const login = useAuthStore(state => state.login)
 	const BrowserStorage = saveToBrowserStorage()
+	const Notification = useNotificationWithToast()
 
-	const HttpPostLogin = useHttpMutation<AuthenticationResponse, AxiosError, loginSchemaProps>({
+	const { mutate, isLoading } = useHttpMutation<AuthenticationResponse, AxiosError, loginSchemaProps>({
 		HttpService: { endpoint: ENDPOINT.login },
 		options: {
 			onSuccess: data => {
@@ -25,10 +26,10 @@ export const MakeLogin = () => {
 				navigate(AUTHROUTES.home)
 			},
 			onError: () => {
-				toast.error('Emai ou senha invalido')
+				Notification.error('Emai ou senha invalido')
 			},
 		},
 	})
 
-	return <Login loginMutation={HttpPostLogin} loginSchema={loginSchema} />
+	return <Login loginMutation={mutate} loginSchema={loginSchema} loginMutationLoading={isLoading} />
 }

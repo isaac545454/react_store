@@ -3,7 +3,7 @@ import { LoginProps } from '../types/interface'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { loginSchemaProps } from '../../../../domain/schemas/login'
 
-export const useLogin = ({ loginMutation, loginSchema }: LoginProps) => {
+export const useLogin = ({ loginMutation, loginSchema, loginMutationLoading }: LoginProps) => {
 	const {
 		register,
 		formState: { errors },
@@ -13,7 +13,8 @@ export const useLogin = ({ loginMutation, loginSchema }: LoginProps) => {
 	})
 
 	const onSubmit = (data: loginSchemaProps) => {
-		loginMutation.mutate(data)
+		if (loginMutationLoading) return
+		loginMutation(data)
 	}
 
 	return {
