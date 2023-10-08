@@ -5,11 +5,12 @@ import { useHttpMutation } from '../../../presentation/hooks/useHttpMutation'
 import { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { AuthenticationResponse } from '../../../domain/models/AuthenticationResponse'
 
 export const MakeLogin = () => {
 	const navigate = useNavigate()
 
-	const HttpPostLogin = useHttpMutation<string, AxiosError, ISchema>({
+	const HttpPostLogin = useHttpMutation<AuthenticationResponse, AxiosError, ISchema>({
 		HttpService: { endpoint: ENDPOINT.login },
 		options: {
 			onSuccess: () => {
