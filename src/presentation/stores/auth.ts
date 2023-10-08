@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { User } from '../../domain/models/User'
+import { saveToBrowserStorage } from '../../main/Factories/Storage/storageFactory'
 
 interface AuthState {
 	user: User | null
@@ -7,8 +8,14 @@ interface AuthState {
 	logout: () => void
 }
 
-export const useAuthStore = create<AuthState>(set => ({
-	user: null,
-	login: user => set({ user }),
-	logout: () => set({ user: null }),
-}))
+export const useAuthStore = create<AuthState>(set => {
+	const { removeItem } = saveToBrowserStorage()
+	return {
+		user: null,
+		login: user => set({ user }),
+		logout: () => {
+			set({ user: null })
+			removeItem('accessToken')
+		},
+	}
+})

@@ -1,6 +1,7 @@
 import { UseMutationResult, useMutation } from '@tanstack/react-query'
 import { IPostMutation, TRequestProps } from './types'
 import { createHttp } from '../../../infra/Http/HttpClientFactory/http-client-factory'
+import { HttpMethod } from '../../types/HttpType'
 
 export const useHttpMutation = <TData, TError, TRequest>({
 	options,
@@ -13,7 +14,7 @@ export const useHttpMutation = <TData, TError, TRequest>({
 
 		return http.exec({
 			data: data,
-			method: 'POST',
+			method: HttpMethod.POST,
 			params: { ...params, ...HttpService.params },
 			...HttpService,
 		})
