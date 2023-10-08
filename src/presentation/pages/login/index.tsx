@@ -20,6 +20,7 @@ export const Login = (props: LoginProps) => {
 						<Input title="USUÁRIO:" margin="32px 0px 0px" {...register('email')} error={{ name: 'email', errors }} />
 						<Input
 							title="SENHA"
+							type="password"
 							margin="32px 0px 16px 0px"
 							{...register('password')}
 							error={{ name: 'password', errors }}
