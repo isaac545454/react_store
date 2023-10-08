@@ -9,16 +9,19 @@ import { AUTHROUTES } from '../../../../presentation/AppRouter/routes/auth'
 import { loginSchema } from '../../../../domain/models/Login'
 import { useAuthStore } from '../../../../presentation/stores/auth'
 import { loginSchemaProps } from '../../../../domain/schemas/login'
+import { saveToBrowserStorage } from '../../Storage/storageFactory'
 
 export const MakeLogin = () => {
 	const navigate = useNavigate()
 	const login = useAuthStore(state => state.login)
+	const BrowserStorage = saveToBrowserStorage()
 
 	const HttpPostLogin = useHttpMutation<AuthenticationResponse, AxiosError, loginSchemaProps>({
 		HttpService: { endpoint: ENDPOINT.login },
 		options: {
 			onSuccess: data => {
 				login(data.user)
+				BrowserStorage.setItem('accessToken', data.accessToken)
 				navigate(AUTHROUTES.home)
 			},
 			onError: () => {
