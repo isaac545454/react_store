@@ -1,3 +1,3 @@
 export const AUTHROUTES = {
-	home: '/home',
+	product: '/produtos',
 }

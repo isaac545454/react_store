@@ -1,7 +1,7 @@
 import { Login } from '../../../../presentation/pages/login'
 import { ENDPOINT } from '../../../../infra/Http/HttpEndpoints/endpoint-http'
 import { useHttpMutation } from '../../../../presentation/hooks/useHttpMutation'
-import axios, { AxiosError } from 'axios'
+import { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { AuthenticationResponse } from '../../../../domain/models/AuthenticationResponse'
 import { AUTHROUTES } from '../../../../presentation/AppRouter/routes/auth'
