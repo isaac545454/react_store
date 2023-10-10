@@ -1,4 +1,4 @@
-import { RouterProvider } from 'react-router-dom'
+import { RouterProvider, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../stores/auth'
 import { AuthRotes } from './auth'
 import { NotAuth } from './notAuth'
@@ -6,10 +6,12 @@ import { saveToBrowserStorage } from '../../../main/Factories/Storage/storageFac
 import { useHttpQuery } from '../../hooks/useHttpQuery'
 import { ENDPOINT } from '../../../infra/Http/HttpEndpoints/endpoint-http'
 import { User } from '../../../domain/models/User'
+import { AUTHROUTES } from '../routes/auth'
 
 export const Routes = () => {
 	const { user, login } = useAuthStore()
 	const { getItem } = saveToBrowserStorage()
+	const navigate = useNavigate()
 	const userAcess = getItem('accessToken')
 
 	useHttpQuery<User>({
@@ -22,13 +24,12 @@ export const Routes = () => {
 			enabled: !!userAcess,
 			onSuccess: data => {
 				login(data)
+				navigate(AUTHROUTES.product)
 			},
 		},
 	})
 
 	const routes = user ? AuthRotes : NotAuth
-
-	console.log(!!user)
 
 	return <RouterProvider router={routes} />
 }

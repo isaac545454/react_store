@@ -1,8 +1,6 @@
 import { create } from 'zustand'
 import { User } from '../../domain/models/User'
 import { saveToBrowserStorage } from '../../main/Factories/Storage/storageFactory'
-import { useHttpQuery } from '../hooks/useHttpQuery'
-import { ENDPOINT } from '../../infra/Http/HttpEndpoints/endpoint-http'
 
 interface AuthState {
 	user: User | null
@@ -11,7 +9,7 @@ interface AuthState {
 }
 
 export const useAuthStore = create<AuthState>(set => {
-	const { removeItem, getItem } = saveToBrowserStorage()
+	const { removeItem } = saveToBrowserStorage()
 
 	return {
 		user: null,
