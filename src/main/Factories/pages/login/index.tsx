@@ -26,7 +26,7 @@ export const MakeLogin = () => {
 				BrowserStorage.setItem('accessToken', data.accessToken)
 				Notification.success('login Realizado com sucesso')
 				apiClient({ headers: { Authorization: `Bearer ${data.accessToken}` } })
-				navigate(AUTHROUTES.home)
+				navigate(AUTHROUTES.product)
 			},
 			onError: () => {
 				Notification.error('Emai ou senha invalido')
