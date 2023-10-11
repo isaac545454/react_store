@@ -8,7 +8,6 @@ import { useAuthStore } from '../../../../presentation/stores/auth'
 import { loginSchemaProps } from '../../../../domain/schemas/login'
 import { saveToBrowserStorage } from '../../Storage/storageFactory'
 import { useNotificationWithToast } from '../../Notification'
-import { apiClient } from '../../../../infra/Http/HttpClient/client-config'
 import { useNavigate } from 'react-router-dom'
 import { AUTHROUTES } from '../../../../presentation/AppRouter/routes/auth'
 
@@ -25,7 +24,6 @@ export const MakeLogin = () => {
 				login(data.user)
 				BrowserStorage.setItem('accessToken', data.accessToken)
 				Notification.success('login Realizado com sucesso')
-				apiClient({ headers: { Authorization: `Bearer ${data.accessToken}` } })
 				navigate(AUTHROUTES.product)
 			},
 			onError: () => {
