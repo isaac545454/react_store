@@ -17,7 +17,13 @@ export const Login = (props: LoginProps) => {
 						LOGIN
 					</S.TitleLogin>
 					<form onSubmit={handleSubmit(onSubmit)}>
-						<Input title="USUÁRIO:" margin="32px 0px 0px" {...register('email')} error={{ name: 'email', errors }} />
+						<Input
+							title="USUÁRIO:"
+							margin="32px 0px 0px"
+							{...register('email')}
+							error={{ name: 'email', errors }}
+						
+						/>
 						<Input
 							title="SENHA"
 							type="password"

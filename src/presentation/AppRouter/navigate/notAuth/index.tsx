@@ -1,5 +1,7 @@
+import { MakeLogin } from '../../../../main/Factories/Pages/login'
+import { NotFound } from '../../../pages/404'
 import { NOTAUTHROUTES } from '../../routes/notAuth'
-import { MakeLogin } from '../../../../main/Factories/pages/login'
+
 import { createBrowserRouter } from 'react-router-dom'
 
 export const NotAuth = createBrowserRouter([
@@ -9,6 +11,6 @@ export const NotAuth = createBrowserRouter([
 	},
 	{
 		path: '*',
-		element: <MakeLogin />,
+		element: <NotFound />,
 	},
 ])
